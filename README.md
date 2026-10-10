@@ -1,22 +1,22 @@
 # waste-detection
 
-Deteksi sampah **organik** dan **anorganik** dengan YOLO26 (Ultralytics, PyTorch).
-Dataset: [waste Detection](https://universe.roboflow.com/capstone-catzw/waste-detection-yle4x) dari Roboflow Universe (CC BY 4.0).
+Detect **organic** and **inorganic** waste with YOLO26 (Ultralytics, PyTorch).
+Dataset: [waste Detection](https://universe.roboflow.com/capstone-catzw/waste-detection-yle4x) from Roboflow Universe (CC BY 4.0).
 
-| Kondisi | Output |
+| What's in the image | Output |
 |---|---|
-| Tidak ada sampah terdeteksi | Tidak ada output |
-| Ada sampah organik | `organik` |
-| Ada sampah anorganik | `anorganik` |
+| No waste detected | Nothing |
+| Organic waste | `organik` |
+| Inorganic waste | `anorganik` |
 
-## Struktur folder
+## Folder structure
 
 ```
 waste-detection/
-├── .venv/                  # dibuat oleh setup.sh
-├── data/                   # dataset hasil unduhan Roboflow
-├── runs/                   # hasil training & evaluasi YOLO
-├── models/                 # bobot model (pretrained + terbaik)
+├── .venv/                  # created by setup.sh
+├── data/                   # dataset downloaded from Roboflow
+├── runs/                   # YOLO training & evaluation results
+├── models/                 # model weights (pretrained + best)
 ├── waste_detection.ipynb
 ├── requirements.txt
 ├── setup.sh
@@ -25,42 +25,42 @@ waste-detection/
 └── README.md
 ```
 
-`data/`, `runs/`, `models/`, `.venv/`, dan `.env` tidak ikut ke git.
+`data/`, `runs/`, `models/`, `.venv/`, and `.env` don't get pushed to git.
 
-## 1. Pasang environment (Linux / macOS)
+## 1. Set up the environment (Linux / macOS)
 
 ```bash
 cd waste-detection
 bash setup.sh
 ```
 
-`setup.sh` akan:
-1. Membuat `.venv`
-2. Memasang PyTorch **CUDA** kalau ada GPU NVIDIA (`nvidia-smi` jalan), atau **CPU** kalau tidak
-3. Memasang semua library di `requirements.txt`
-4. Mendaftarkan kernel Jupyter **Python (waste-detection)**
+`setup.sh` will:
+1. Create `.venv`
+2. Install the **CUDA** version of PyTorch if you have an NVIDIA GPU (`nvidia-smi` works), or the **CPU** version if you don't
+3. Install all the libraries in `requirements.txt`
+4. Register the Jupyter kernel **Python (waste-detection)**
 
-Butuh Python 3.10 sampai 3.14. Kalau `python3` di sistemmu versi lain:
+You need Python 3.10 to 3.14. If your `python3` is a different version:
 
 ```bash
 PYTHON=python3.12 bash setup.sh
 ```
 
-### Mengaktifkan environment
+### Turning the environment on and off
 
 ```bash
-source .venv/bin/activate     # aktifkan
-deactivate                    # keluar
+source .venv/bin/activate     # turn on
+deactivate                    # turn off
 ```
 
-### Pasang manual (tanpa setup.sh, mis. di Windows)
+### Manual install (no setup.sh, e.g. on Windows)
 
 ```bash
 python -m venv .venv
 .venv\Scripts\activate                     # Windows
-# GPU NVIDIA:
+# NVIDIA GPU:
 pip install torch==2.14.1 torchvision==0.29.1 --index-url https://download.pytorch.org/whl/cu130
-# Tanpa GPU:
+# No GPU:
 pip install torch==2.14.1 torchvision==0.29.1 --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements.txt
 pip uninstall -y opencv-python-headless
@@ -68,14 +68,14 @@ pip install --force-reinstall --no-deps opencv-python==5.0.0.93
 python -m ipykernel install --user --name waste-detection --display-name "Python (waste-detection)"
 ```
 
-## 2. Pilih kernel
+## 2. Pick the kernel
 
 **VS Code**
-1. Buka folder `waste-detection`
-2. Buka `waste_detection.ipynb`
-3. Klik **Select Kernel** (kanan atas) → **Jupyter Kernel** → **Python (waste-detection)**
+1. Open the `waste-detection` folder
+2. Open `waste_detection.ipynb`
+3. Click **Select Kernel** (top right) → **Jupyter Kernel** → **Python (waste-detection)**
 
-   Atau: **Python Environments** → pilih `.venv/bin/python`
+   Or: **Python Environments** → pick `.venv/bin/python`
 
 **Jupyter Lab / Notebook**
 
@@ -84,30 +84,30 @@ source .venv/bin/activate
 jupyter lab
 ```
 
-Lalu menu **Kernel → Change Kernel → Python (waste-detection)**.
+Then go to **Kernel → Change Kernel → Python (waste-detection)**.
 
-## 3. Isi Roboflow API key
+## 3. Add your Roboflow API key
 
-Ambil key di [app.roboflow.com](https://app.roboflow.com) → **Settings → API Keys** → salin **Private API Key**.
+Get your key at [app.roboflow.com](https://app.roboflow.com) → **Settings → API Keys** → copy the **Private API Key**.
 
-Pilih salah satu:
+Pick one:
 
-**Lokal: file `.env`** (disarankan)
+**Local: `.env` file** (recommended)
 
 ```bash
 cp .env.example .env
 # edit .env:
-# ROBOFLOW_API_KEY=key_kamu
+# ROBOFLOW_API_KEY=your_key
 ```
 
-**Lokal: environment variable**
+**Local: environment variable**
 
 ```bash
-export ROBOFLOW_API_KEY=key_kamu
+export ROBOFLOW_API_KEY=your_key
 ```
 
-Kalau tidak ada satu pun, notebook akan meminta key saat dijalankan.
+If you skip both, the notebook will ask for the key when you run it.
 
-## 4. Webcam (lokal saja)
+## 4. Webcam (local only)
 
-Di sel terakhir bagian inference, ubah `RUN_WEBCAM = True`, jalankan, tekan **Q** untuk berhenti.
+In the last cell of the inference section, set `RUN_WEBCAM = True`, run it, and press **Q** to stop.
