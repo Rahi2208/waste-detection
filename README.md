@@ -3,6 +3,8 @@
 Detect **organic** and **inorganic** waste with YOLO26 (Ultralytics, PyTorch).
 Dataset: [waste Detection](https://universe.roboflow.com/capstone-catzw/waste-detection-yle4x) from Roboflow Universe (CC BY 4.0).
 
+this repo is inspired by Computer vision with python and tensorflow by freecodecamp.org, but we use pytorch instead
+
 | What's in the image | Output |
 |---|---|
 | No waste detected | Nothing |
