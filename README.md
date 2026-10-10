@@ -3,7 +3,6 @@
 Detect **organic** and **inorganic** waste with YOLO26 (Ultralytics, PyTorch).
 Dataset: [waste Detection](https://universe.roboflow.com/capstone-catzw/waste-detection-yle4x) from Roboflow Universe (CC BY 4.0).
 
-this repo is inspired by Computer vision with python and tensorflow by freecodecamp.org, but we use pytorch instead
 
 | What's in the image | Output |
 |---|---|
@@ -113,3 +112,5 @@ If you skip both, the notebook will ask for the key when you run it.
 ## 4. Webcam (local only)
 
 In the last cell of the inference section, set `RUN_WEBCAM = True`, run it, and press **Q** to stop.
+
+# Acknowledgement Computer vision with python and tensorflow by freecodecamp.org, but we use pytorch instead https://colab.research.google.com/drive/18u1KDx-9683iZNPxSDZ6dOv9319ZuEC_
