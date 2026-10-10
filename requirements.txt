@@ -1,0 +1,16 @@
+# Versi dikunci (pinned). Dipasang oleh setup.sh.
+# torch & torchvision dipasang duluan oleh setup.sh:
+#   - ada GPU NVIDIA -> build CUDA (PyPI)
+#   - tidak ada      -> build CPU  (download.pytorch.org/whl/cpu)
+torch==2.14.1
+torchvision==0.29.1
+
+ultralytics==8.4.175
+roboflow==1.7.1
+opencv-python==5.0.0.93
+matplotlib==3.11.2
+pandas==3.0.6
+pyyaml==6.0.3
+
+jupyter==1.1.1
+ipykernel==7.4.0

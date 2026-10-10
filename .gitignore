@@ -1,0 +1,20 @@
+# Environment
+.venv/
+.env
+
+# Dataset, hasil training, bobot model (folder tetap disimpan lewat .gitkeep)
+data/*
+!data/.gitkeep
+runs/*
+!runs/.gitkeep
+models/*
+!models/.gitkeep
+*.pt
+*.onnx
+
+# Cache
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.cache/
+.DS_Store
